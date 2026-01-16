@@ -1,15 +1,18 @@
-package removeemoji
+package removeemoji_test
 
 import (
+	"fmt"
 	"strings"
 	"testing"
+
+	removeemoji "github.com/guanting112/go-remove-emoji"
 )
 
 func Test_FromRunes_Ok(t *testing.T) {
 	input := []rune("Hi 哈👾洛👾沃👾德👾１２👾👾３ 👾")
 	expected := []rune("Hi 哈洛沃德１２３ ")
 
-	got := FromRunes(input)
+	got := removeemoji.FromRunes(input)
 
 	if string(got) != string(expected) {
 		t.Errorf("FromRunes() = %v, want %v", got, expected)
@@ -162,7 +165,7 @@ func Test_FromString_Ok(t *testing.T) {
 			if tc.stripNewline {
 				input = strings.ReplaceAll(input, "\n", "")
 			}
-			out := FromString(input)
+			out := removeemoji.FromString(input)
 
 			if tc.shouldEq {
 				if out != tc.input {
@@ -1082,3 +1085,15 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ....0123456789
 ㄥ　ㄦ　ㄧ　ㄨ　ㄩ　˙　ˊ　ˇ　ˋ 
 Ä　Ã　Ç　Ê　Ë　Î　Ï　Ð　Ñ　Õ　Ö　Û　Ü　ã　ä　ê　ë　î ï　õ
 ö　Ÿ　Ŵ　Ž　Ť　Ř　Ň　ĩ　ħ　ą　č　Ĥ`
+
+func ExampleFromString() {
+	originalString := "哈洛Hello 😊🌍 World沃德!"
+	newString := removeemoji.FromString(originalString)
+	fmt.Println(newString) // Output: 哈洛Hello  World沃德!
+}
+
+func ExampleFromRunes() {
+	originalRunes := []rune("哈洛Hello 😊🌍 World沃德!")
+	newString := removeemoji.FromRunes(originalRunes)
+	fmt.Println(string(newString)) // Output: 哈洛Hello  World沃德!
+}
