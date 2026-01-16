@@ -1,4 +1,8 @@
-# Remove Emoji (for Go)
+# Remove Emoji (for Golang)
+
+[![Go Test](https://github.com/guanting112/go-remove-emoji/actions/workflows/go.yml/badge.svg)](https://github.com/guanting112/go-remove-emoji/actions/workflows/go.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/guanting112/go-remove-emoji.svg)](https://pkg.go.dev/github.com/guanting112/go-remove-emoji)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a Go package developed for "removing" Unicode Emoji icons, you can use this package to remove annoying Emoji symbols.
 
